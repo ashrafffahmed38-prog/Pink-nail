@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Pink Nail Store</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#fff4f8;
+}
+
+header{
+background:#ff4fa3;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.banner{
+background:url("banner.jpg");
+height:350px;
+background-size:cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:40px;
+font-weight:bold;
+}
+
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:30px;
+}
+
+.product{
+background:white;
+width:220px;
+margin:15px;
+padding:15px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+}
+
+button{
+background:#ff4fa3;
+border:none;
+color:white;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.social a{
+margin:10px;
+color:white;
+text-decoration:none;
+font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Pink Nail Store 💅</h1>
+<a href="cart.html" style="color:white">🛒 Cart</a>
+</header>
+
+<div class="banner">
+Pink Nail Store
+</div>
+
+<div class="products">
+
+<div class="product">
+<img src="nail1.jpg">
+<h3>Nail Polish</h3>
+<p>80 جنيه</p>
+<button onclick="addToCart('Nail Polish',80)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="nail2.jpg">
+<h3>Gel Nail Kit</h3>
+<p>200 جنيه</p>
+<button onclick="addToCart('Gel Nail Kit',200)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="nail3.jpg">
+<h3>Nail Care</h3>
+<p>120 جنيه</p>
+<button onclick="addToCart('Nail Care',120)">Add to Cart</button>
+</div>
+
+</div>
+
+<footer>
+
+<p>تابعينا على السوشيال ميديا</p>
+
+<div class="social">
+<a href="#">Instagram</a>
+<a href="#">Facebook</a>
+<a href="#">TikTok</a>
+</div>
+
+</footer>
+
+<script>
+
+function addToCart(name,price){
+
+let cart=JSON.parse(localStorage.getItem("cart"))||[]
+
+cart.push({name,price})
+
+localStorage.setItem("cart",JSON.stringify(cart))
+
+alert("تم إضافة المنتج للسلة")
+
+}
+
+</script>
+
+</body>
+</html>
