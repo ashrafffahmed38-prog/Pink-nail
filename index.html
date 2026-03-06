@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pink Nail Store</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#fff0f6;
+}
+
+header{
+background:#ff4fa3;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.search input{
+padding:7px;
+border-radius:5px;
+border:none;
+}
+
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:20px;
+}
+
+.product{
+background:white;
+width:220px;
+margin:15px;
+padding:15px;
+border-radius:12px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.product img{
+width:100%;
+border-radius:10px;
+}
+
+button{
+background:#ff4fa3;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:7px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff2d8e;
+}
+
+.cart{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:10px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#eee;
+margin-top:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Pink Nail Store 💅</div>
+
+<div class="search">
+<input id="search" placeholder="ابحث عن منتج" onkeyup="searchProduct()">
+</div>
+
+</header>
+
+<div class="products" id="products">
+
+<div class="product" data-name="nail polish">
+
+<img src="https://via.placeholder.com/200">
+
+<h3>Nail Polish</h3>
+
+<p>80 جنيه</p>
+
+<p>⭐⭐⭐⭐</p>
+
+<button onclick="addToCart('Nail Polish',80)">Add to Cart</button>
+
+</div>
+
+<div class="product" data-name="gel nail">
+
+<img src="https://via.placeholder.com/200">
+
+<h3>Gel Nail Kit</h3>
+
+<p>200 جنيه</p>
+
+<p>⭐⭐⭐⭐⭐</p>
+
+<button onclick="addToCart('Gel Nail Kit',200)">Add to Cart</button>
+
+</div>
+
+<div class="product" data-name="nail care">
+
+<img src="https://via.placeholder.com/200">
+
+<h3>Nail Care Set</h3>
+
+<p>120 جنيه</p>
+
+<p>⭐⭐⭐⭐</p>
+
+<button onclick="addToCart('Nail Care',120)">Add to Cart</button>
+
+</div>
+
+</div>
+
+<div class="cart">
+
+<h2>سلة المشتريات 🛒</h2>
+
+<ul id="cart"></ul>
+
+<p id="total"></p>
+
+<h3>كوبون خصم</h3>
+
+<input id="coupon" placeholder="ادخل الكوبون">
+
+<button onclick="applyCoupon()">تطبيق</button>
+
+<br><br>
+
+<h3>طريقة الدفع</h3>
+
+<input type="radio" name="pay"> فيزا  
+<br>
+<input type="radio" name="pay"> كاش عند الاستلام
+
+<br><br>
+
+<button onclick="checkout()">تأكيد الطلب</button>
+
+</div>
+
+<div class="cart">
+
+<h2>تسجيل حساب 👤</h2>
+
+<input id="email" placeholder="Email">
+
+<br><br>
+
+<input id="password" type="password" placeholder="Password">
+
+<br><br>
+
+<button onclick="register()">تسجيل</button>
+
+</div>
+
+<footer>
+
+Pink Nail Store © 2026
+
+</footer>
+
+<script>
+
+let cart=[]
+let total=0
+
+function addToCart(name,price){
+
+cart.push(name)
+
+total+=price
+
+let li=document.createElement("li")
+
+li.innerText=name+" - "+price+" جنيه"
+
+document.getElementById("cart").appendChild(li)
+
+document.getElementById("total").innerText="المجموع: "+total+" جنيه"
+
+}
+
+function checkout(){
+
+alert("تم إرسال الطلب بنجاح 💗")
+
+}
+
+function register(){
+
+let email=document.getElementById("email").value
+
+alert("تم إنشاء الحساب: "+email)
+
+}
+
+function searchProduct(){
+
+let input=document.getElementById("search").value.toLowerCase()
+
+let products=document.querySelectorAll(".product")
+
+products.forEach(p=>{
+
+let name=p.dataset.name
+
+if(name.includes(input))
+
+p.style.display="block"
+
+else
+
+p.style.display="none"
+
+})
+
+}
+
+function applyCoupon(){
+
+let code=document.getElementById("coupon").value
+
+if(code=="NAIL10"){
+
+total=total*0.9
+
+document.getElementById("total").innerText="المجموع بعد الخصم: "+total+" جنيه"
+
+alert("تم تطبيق خصم 10%")
+
+}
+
+else{
+
+alert("الكوبون غير صحيح")
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
+
